@@ -28,6 +28,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: mach-aarch64-apple-darwin
-          path: target/aarch64-apple-darwin/release/mach-aarch64-apple-darwin
+          path: target/aarch64-apple-darwin/release/mach
 
 
