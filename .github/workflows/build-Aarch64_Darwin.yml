@@ -17,6 +17,8 @@ jobs:
 
       - name: Set up Rust toolchain
         uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
 
       - name: Build release binary
         run: cargo build --release --workspace --target aarch64-apple-darwin
