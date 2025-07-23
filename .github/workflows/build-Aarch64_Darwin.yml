@@ -1,0 +1,31 @@
+name: Build (aarch64-apple-darwin)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-aarch64:
+    runs-on: macos-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Rust toolchain
+        uses: dtolnay/rust-toolchain@master
+
+      - name: Build release binary
+        run: cargo build --release --workspace --target aarch64-apple-darwin
+
+      # Upload the single CLI binary from the workspace (adjust if you rename it)
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mach-aarch64-apple-darwin
+          path: target/aarch64-apple-darwin/release/mach-aarch64-apple-darwin
+
+
